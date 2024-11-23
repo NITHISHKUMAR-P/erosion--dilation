@@ -30,47 +30,56 @@ REG NO: 212221230070
 ```
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 ```
 ### Create the Text using cv2.putText
 ```
-img1=np.zeros((100,400),dtype="uint8")
-font=cv2.FONT_HERSHEY_PLAIN
-cv2.putText(img1,"JFUJ",(5,70),font,2,(255),5,cv2.LINE_AA)
-cv2.imshow("image",img1)
-cv2.waitKey(0)
+# Create a blank image
+image = np.zeros((500, 500, 3), dtype=np.uint8)
+
+# Add text on the image using cv2.putText
+font = cv2.FONT_HERSHEY_SIMPLEX
+cv2.putText(image, 'NITHISHKUMAR P', (100, 250), font, 1, (255, 255, 255), 2, cv2.LINE_AA)
+# Display the input image
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB for displaying
+plt.title("Input Image with Text")
+plt.axis('off')
 ```
 ### Create the structuring element
 ```
-kernel=np.ones((5,5),np.uint8)
-kernel1=cv2.getStructuringElement(cv2.MORPH_CROSS,(7,7))
+# Create a simple square kernel (3x3)
+kernel = np.ones((3, 3), np.uint8)
 ```
 ### Erode the image
 ```
-cv2.erode(img1, kernel)
-image_erode = cv2.erode(img1,kernel1)
-cv2.imshow("SAN",image_erode)
-cv2.waitKey(0)
+eroded_image = cv2.erode(image, kernel, iterations=1)
+plt.imshow(cv2.cvtColor(eroded_image, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB
+plt.title("Eroded Image")
+plt.axis('off')
 ```
 ### Dilate the image
 ```
-image_dilatel=cv2.dilate(img1,kernel1)
-cv2.imshow("SAN",image_dilatel)
-cv2.waitKey(0)
+dilated_image = cv2.dilate(image, kernel, iterations=1)
+plt.imshow(cv2.cvtColor(dilated_image, cv2.COLOR_BGR2RGB))  # Convert BGR to RGB
+plt.title("Dilated Image")
+plt.axis('off')
 ```
 ## Output:
 
 ### Display the input Image
 
-![image](https://github.com/Jaiganesh235/erosion-dilation/assets/118657189/d55e88f1-3e3b-414a-92f6-9e07c90d92bd)
+![image](https://github.com/user-attachments/assets/753d2a45-3caf-4059-b674-fcd86c9cc3f6)
+
 
 
 ### Display the Eroded Image
 
-![image](https://github.com/Sanjay-sg/erosion--dilation/assets/119559022/bc58838c-cb5e-46fd-b54e-5f57a37d8af2)
+![image](https://github.com/user-attachments/assets/dcd4aa48-5544-45b4-b131-3a4b694b699b)
+
 
 
 ### Display the Dilated Image
-![image](https://github.com/Sanjay-sg/erosion--dilation/assets/119559022/ab4d3614-43b0-4c65-9c4c-e64de3753385)
+![image](https://github.com/user-attachments/assets/444dd9b5-150b-47c0-8ec6-37ee011cfe14)
 
 
 
